@@ -1,0 +1,58 @@
+.kalkulator-pgb table th,
+.kalkulator-pgb table td {
+    vertical-align: middle;
+}
+
+.kalkulator-pgb .card {
+    margin-top: 30px;
+    border: unset;
+    border-radius: unset;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    table.custom-responsive .head,
+    table.custom-responsive th,
+    table.custom-responsive .hide {
+        display: none;
+    }
+
+    table.custom-responsive {
+        border: 0;
+    }
+
+    table.custom-responsive tr {
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    table.custom-responsive tr:last-child {
+        margin-bottom: 0;
+    }
+
+    table.custom-responsive td {
+        display: block;
+        text-align: right;
+    }
+
+    table.custom-responsive td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    table.custom-responsive td:not(:last-child) {
+        border-bottom: 0;
+    }
+}

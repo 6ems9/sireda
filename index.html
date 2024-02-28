@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="description" content="SIREDA - Sistem Informasi Retribusi Daerah" />
+      <meta name="keywords" content="SIREDA, sireda, Sistem Informasi Retribusi Daerah, Retribusi Daerah, Retribusi PBG" />
+      <meta name="author" content="EMS" />
+      <title>SIREDA - Sistem Informasi Retribusi Daerah</title>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" type="text/css" href="assets/css/custom.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/tabelkalkulator.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+      <link rel="shortcut icon" type="image/x-icon" href="assets/public/calculator2.png">
+
+   </head>
+   <body>
+      <div id="dvLoading"></div>
+      <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-header navbar-mobile">
+         <div class="navbar-container container">
+            <div class="navbar-brand"><a class="navbar-brand-logo" href="#top"><img src="assets/public/calculator4.png" style="height: 41px;" alt="Sistem Informasi Retribusi Daerah"></a></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+               <ul class="navbar-nav menu-navbar-nav">
+                  <li class="nav-item"><a class="nav-link" href="#top"><i class="icm fas fa-home"></i> Beranda</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#simulasi"><i class="icm fas fa-calculator"></i> Simulasi</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#" target="_blank"><i class="icm far fa-newspaper"></i> SKRD</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div id="top" class="header">
+         <div class="container header-container">
+            <div class="d-none d-lg-block col-lg-6 header-img-section"><img src="assets/public/baner2.jpg" class="img-fluid" alt="banner"></div>
+            <div class="col-lg-5 offset-lg-1 col-sm-12 header-title-section">
+               <h1 class="header-title">Sistem Informasi Retribusi Daerah Kabupaten Kota</h1>
+               <p class="header-title-text">Perhitungan Persetujuan Bangunan Gedung (PBG) Dan Pembuatan Surat Ketetapan Retribusi Daerah (SKRD).</p>
+               <div class="learn-more-btn-section"><a class="nav-link learn-more-btn btn-invert" href="#simulasi">Mulai Simulasi</a></div>
+            </div>
+         </div>
+      </div>
+      <section id="simulasi" class="calculator-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <h3 class="section-heading">Kalkulator Persetujuan Bangunan Gedung (PBG)</h3>
+               </div>
+               <div class="col-lg-12 kalkulator-pgb">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-bordered mb-0 custom-responsive">
+                              <tbody>
+                                 <tr class="head">
+                                    <td colspan="3" rowspan="2"></td>
+                                    <th class="text-center">FUNGSI BANGUNAN</th>
+                                    <th class="text-center">INDEKS</th>
+                                    <th class="text-center">NILAI ( A )</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" data-label="FUNGSI BANGUNAN">
+                                       <select id="indexFungsi" class="form-control">
+                                          <option value="0">-- Pilih Fungsi Bangunan --</option>
+                                       </select>
+                                    </td>
+                                    <td align="center" id="index_fungsi" data-label="INDEKS">0</td>
+                                    <td align="center" id="hasil_index_fungsi" data-label="NILAI ( A )">0</td>
+                                 </tr>
+                                 <tr class="head">
+                                    <th class="text-center">NO</th>
+                                    <th class="text-center">KLASIFIKASI</th>
+                                    <th class="text-center">BOBOT</th>
+                                    <th class="text-center">PARAMETER</th>
+                                    <th class="text-center">INDEKS</th>
+                                    <th class="text-center">NILAI ( B )</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">1</td>
+                                    <td align="left" data-label="KLASIFIKASI">Kompleksitas</td>
+                                    <td align="center" id="bobotKompleksitas" data-label="BOBOT">0.3</td>
+                                    <td align="center" data-label="PARAMETER">
+                                       <select id="indexKompleksitas" class="form-control">
+                                          <option value="0">-- Pilih Kompleksitas --</option>
+                                       </select>
+                                    </td>
+                                    <td align="center" id="index_kompleksitas" data-label="INDEKS">0</td>
+                                    <td align="center" id="hasil_index_kompleksitas" data-label="NILAI ( B )">0</td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">2</td>
+                                    <td align="left" data-label="KLASIFIKASI">Permanensi</td>
+                                    <td align="center" id="bobotPermanensi" data-label="BOBOT">0.2</td>
+                                    <td align="center" data-label="PARAMETER">
+                                       <select id="indexPermanensi" class="form-control">
+                                          <option value="0">-- Pilih Permanensi --</option>
+                                       </select>
+                                    </td>
+                                    <td align="center" id="index_permanensi" data-label="INDEKS">0</td>
+                                    <td align="center" id="hasil_index_permanensi" data-label="NILAI ( B )">0</td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">3</td>
+                                    <td align="left" data-label="KLASIFIKASI">Ketinggian</td>
+                                    <td align="center" id="bobotKetinggian" data-label="BOBOT">0.5</td>
+                                    <td align="center" data-label="PARAMETER">
+                                       <select id="indexKetinggian" class="form-control">
+                                          <option value="0">-- Pilih Ketinggian --</option>
+                                       </select>
+                                    </td>
+                                    <td align="center" id="index_ketinggian" data-label="INDEKS">0</td>
+                                    <td align="center" id="hasil_index_ketinggian" data-label="NILAI ( B )">0</td>
+                                 </tr>
+                                 <tr>
+                                    <th colspan="5" class="text-right">JUMLAH ( B )</th>
+                                    <td align="center" id="jumlah_klasifikasi" data-label="JUMLAH ( B )">0</td>
+                                 </tr>
+                                 <tr class="head">
+                                    <td colspan="3" rowspan="2"></td>
+                                    <th class="text-center">FAKTOR KEPEMILIKAN</th>
+                                    <th class="text-center">INDEKS</th>
+                                    <th class="text-center">NILAI ( C )</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" data-label="FAKTOR KEPEMILIKAN">
+                                       <select id="indexKepemilikan" class="form-control">
+                                          <option value="0">-- Pilih Faktor Kepemilikan --</option>
+                                       </select>
+                                    </td>
+                                    <td align="center" id="index_kepemilikan" data-label="INDEKS">0</td>
+                                    <td align="center" id="hasil_index_kepemilikan" data-label="NILAI ( C )">0</td>
+                                 </tr>
+                                 <tr>
+                                    <th colspan="5" class="text-right">Indeks Terintegrasi ( IT ) = A x B x C</th>
+                                    <td align="center" id="index_terintegrasi" data-label="INDEKS TERINTEGRASI">0</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-12 kalkulator-pgb">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-bordered mb-0 custom-responsive">
+                              <tbody>
+                                 <tr class="head">
+                                    <th class="text-center">LUAS BANGUNAN</th>
+                                    <th class="text-center">INDEKS LOKALITAS</th>
+                                    <th class="text-center">INDEKS KEGIATAN</th>
+                                    <th class="text-center">SHST</th>
+                                    <th class="text-center">JUMLAH</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" data-label="LUAS BANGUNAN">
+                                       <div class="input-group">
+                                          <input type="number" min="0" class="form-control" id="luas-bangunan" value="0">
+                                          <div class="input-group-append">
+                                             <div class="input-group-text">M<sup>2</sup></div>
+                                          </div>
+                                       </div>
+                                    </td>
+                                    <td align="center" data-label="INDEKS LOKALITAS">0.5%</td>
+                                    <td align="center" data-label="INDEKS KEGIATAN">
+                                       <select name="" id="indeksKegiatan" class="form-control">
+                                          <option value="">-- Pilih Indeks Kegiatan --</option>
+                                          <option value="0.225">Rusak Sedang - Pelestarian Madya</option>
+                                          <option value="0.325">Rusak Berat - Pelestarian Pratama</option>
+                                          <option value="1">Pembangunan Gedung Baru</option>
+                                          <option value="0.15">Pelestarian Utama</option>
+                                       </select>
+                                    </td>
+                                    <td align="right" style="vertical-align: middle;" id="nilai_shst" data-label="SHST">Rp. 4.870.000</td>
+                                    <td align="center" id="jumlah_retribusi" data-label="JUMLAH">Rp. 0</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-12 kalkulator-pgb">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-bordered mb-0 custom-responsive">
+                              <tbody>
+                                 <tr class="head">
+                                    <th class="text-center">NO</th>
+                                    <th class="text-center">PRASARANA</th>
+                                    <th class="text-center">BANGUNAN</th>
+                                    <th class="text-center">SATUAN</th>
+                                    <th class="text-center">HARGA SATUAN</th>
+                                    <th class="text-center" width="20%">LUAS PRASARANA BANGUNAN</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">1</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi pembatas/penahan/pengaman</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Pagar</td>
+                                    <td align="center" data-label="SATUAN">m</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Tanggul/retaining wall</td>
+                                    <td align="center" data-label="SATUAN">m</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Turap batas kavling/persil</td>
+                                    <td align="center" data-label="SATUAN">m</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">2</td>
+                                    <td data-label="PRASARANA">Konstruksi penanda masuk lokasi</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">3</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi perkerasan</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Jalan/parkir/conblock</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 8.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="8000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Lapangan upacara</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 8.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="8000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Lapangan olahraga terbuka</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 8.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="8000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">4</td>
+                                    <td data-label="PRASARANA">Konstruksi perkerasan aspal, beton</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 8.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="8000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">5</td>
+                                    <td data-label="PRASARANA">Konstruksi perkerasan grassblock</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="3">6</td>
+                                    <td data-label="PRASARANA" rowspan="3">Konstruksi penghubung</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Jembatan</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 15.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="15000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Box culvert</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 15.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="15000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">7</td>
+                                    <td data-label="PRASARANA">Konstruksi penghubung (jembatan antar gedung)</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 10.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="10000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">8</td>
+                                    <td data-label="PRASARANA">Konstruksi penghubung (jembatan penyebrangan orang/barang)</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 250.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="250000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">9</td>
+                                    <td data-label="PRASARANA">Konstruksi penghubung (jembatan bawah tanah/underpass)</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 140.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="140000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="3">10</td>
+                                    <td data-label="PRASARANA" rowspan="3">Konstruksi kolam/reservoir bawah tanah</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Kolam/kolam renang</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 30.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="30000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Kolam pengolahan air reservoir di bawah tanah</td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 30.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="30000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">11</td>
+                                    <td data-label="PRASARANA">Konstruksi septic tank, sumur resapan</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 15.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="15000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="3">12</td>
+                                    <td data-label="PRASARANA" rowspan="3">Konstruksi menara</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Menara reservoir</td>
+                                    <td align="center" data-label="SATUAN">Per 5 m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Cerobong</td>
+                                    <td align="center" data-label="SATUAN">Per 5 m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 500.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="500000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">13</td>
+                                    <td data-label="PRASARANA">Konstruksi menara air</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">Per 5 m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 400.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="400000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">14</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi monumen</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Tugu</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Patung</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Di dalam persil</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 500.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="500000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">15</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi instalasi/gardu listrik</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Instalasi Listrik</td>
+                                    <td align="center" data-label="SATUAN">Unit (luas maksimum 10 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 400.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="400000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Instalasi telepon/komunikasi</td>
+                                    <td align="center" data-label="SATUAN">Unit (luas maksimum 10 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 400.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="400000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Instalasi pengolahan</td>
+                                    <td align="center" data-label="SATUAN">Unit (luas maksimum 10 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 200.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="200000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">16</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi reklame/papan nama</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Billboard/papan iklan</td>
+                                    <td align="center" data-label="SATUAN">Unit dan penambahannya (luas konstruksi reklame maksimum 30 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 4.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="4000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Papan nama (berdiri sendiri atau berupa tembok pagar)</td>
+                                    <td align="center" data-label="SATUAN">Unit dan penambahannya (luasan konstruksi reklame maksimum 30 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 3.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="3000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Videotron/megatron (berdiri sendiri)</td>
+                                    <td align="center" data-label="SATUAN">Unit dan penambahannya (luas konstruksi reklame maksimum 30 m2)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="2">17</td>
+                                    <td data-label="PRASARANA" rowspan="2">Konstruksi pondasi mesin</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Pondasi mesin</td>
+                                    <td align="center" data-label="SATUAN">Unit mesin</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 550.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="550000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">18</td>
+                                    <td data-label="PRASARANA">Konstruksi Menara televisi</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">Unit (tinggi maksimal 100 m, selebihnya dihitung kelipatannya)</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 600.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="600000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="7">19</td>
+                                    <td data-label="PRASARANA" rowspan="7">Konstruksi Antena Radio - Standing tower dengan konstruksi 3-4 kaki</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 25 - 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 6.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="6000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 51 - 75 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 8.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="8000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 76 - 100 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 10.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="10000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 101 - 125 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 12.500.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="12500000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 126 - 150 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 15.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="15000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian diatas 150 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 20.500.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="20500000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="5">20</td>
+                                    <td data-label="PRASARANA" rowspan="5">Konstruksi Antena Radio - Sistem guy wire/bentang kawat</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 0 - 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 3.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="3000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 51 - 75 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 4.500.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="4500000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 76 - 100 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 6.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="6000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian diatas 100 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 10.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="10000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">21</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi antenna (tower telekomunikasi) - Menara Bersama</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian kurang dari 25 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 10.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="10000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 25 - 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 20.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="20000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian diatas 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 30.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="30000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO" rowspan="4">22</td>
+                                    <td data-label="PRASARANA" rowspan="4">Konstruksi antenna (tower telekomunikasi) - Menara Mandiri</td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian kurang dari 25 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 25.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="25000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian 25 - 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-label="BANGUNAN">Ketinggian diatas 50 m</td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 75.000.000</td>
+                                    <td align="center" data-label="NILAI"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="75000000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">23</td>
+                                    <td data-label="PRASARANA">Tangki tanam bahan bakar</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">Unit</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 2.850.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="2850000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">24</td>
+                                    <td data-label="PRASARANA">Pekerjaan drainase (dalam persil)</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 3.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="3000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">25</td>
+                                    <td data-label="PRASARANA">Konstruksi penyimpanan/Silo</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m3</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 5.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="5000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" class="hide" data-label="NO">26</td>
+                                    <td data-label="PRASARANA">Gapura</td>
+                                    <td class="hide" data-label="BANGUNAN"></td>
+                                    <td align="center" data-label="SATUAN">m2</td>
+                                    <td align="center" data-label="HARGA SATUAN">Rp. 50.000</td>
+                                    <td align="center" data-label="LUAS PRASARANA BANGUNAN"><input type="number" class="form-control text-center jumlah-bangunan" data-harga="50000" min="0" value="0"></td>
+                                 </tr>
+                                 <tr>
+                                    <th class="text-right" colspan="5">Jumlah Total Harga Satuan Prasarana Bangunan Gedung (HSpbg)</th>
+                                    <td align="center" id="total_hspbg" data-label="HSPBG">Rp. 0</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-12 kalkulator-pgb">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-bordered mb-3 custom-responsive d-none">
+                              <tbody>
+                                 <tr class="head">
+                                    <th class="text-center" width="50%">BIAYA ADMINISTRASI</th>
+                                    <th class="text-center" width="50%">BIAYA PENYEDIAAN FORMULIR</th>
+                                 </tr>
+                                 <tr>
+                                    <td align="center" data-label="BIAYA ADMINISTRASI">Rp. 0</td>
+                                    <td align="center" data-label="BIAYA PENYEDIAAN FORMULIR">Rp. 0</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <table class="table table-bordered mb-0 custom-responsive">
+                              <tbody>
+                                 <tr>
+                                    <th class="text-right" width="50%">TOTAL BIAYA RETRIBUSI</th>
+                                    <td align="left" id="total_retribusi" data-label="TOTAL BIAYA RETRIBUSI">Rp. 0</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-12 kalkulator-pgb">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="alert alert-warning border-0 mb-0">
+                           <p class="mb-0"> Informasi yang diperoleh dari SIREDA tidak bisa menjadi patokan nilai retribusi PBG karena merupakan estimasi saja. Data final besaran retribusi PBG akan mengacu pada Surat Ketetapan Retribusi Daerah (SKRD) yang akan diterbitkan melalui sistem SIMBG. </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="footer-copyright">&copy; 2024 - DPMPTSP KABUPATEN KOTA</div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+      <script src="assets/js/landing.js"></script>
+      <script src="assets/js/custom.min.js"></script>
+   </body>
+</html>
