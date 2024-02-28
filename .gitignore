@@ -3,7 +3,7 @@ secrets.txt
 .env
 /assets/css/landing.css
 /assets/js/landingcustom.js
-/assets/js/sireda.psd
+/assets/public/sireda.psd
 
 #This is comments(# used for comments)
 *.txt  #this means all files with .txt extention will be ignored
